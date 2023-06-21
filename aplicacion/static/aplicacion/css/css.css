@@ -1,0 +1,81 @@
+.table01{
+    width: 100%;
+    border-collapse: collapse;
+}
+.logo01{
+    height: 100px;
+    display: block;
+    max-width: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+.redes img{
+    height: 20px;
+}
+.table01 td{
+    padding: 0px;
+}
+.carousel-control-prev{
+  background-color: transparent;
+}
+.carousel-control-next{
+  background-color: transparent;
+}
+.carousel-inner{
+  background-color: black;
+}
+.imagen-carusel {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 ;
+    padding: 0;
+    background-color: black;
+  }
+  .Carrusel-index {
+    height: 700px;
+    overflow: hidden;
+    
+  }
+  
+  .Carrusel-index .carousel-item {
+    width: 100%;
+  }
+  
+  .Carrusel-index .imagen-carusel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+    overflow-x: scroll;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .image-container img {
+    width: 500px;
+    height: auto;
+    margin-right: 0;
+    border: 1px solid #ccc;
+  }
+  
+  .image-container img:hover {
+    opacity: 0.95;
+    transform: scale(0.95);
+    transition: all 0.2s ease-in-out;
+  }

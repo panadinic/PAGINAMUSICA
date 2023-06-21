@@ -1,0 +1,115 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'aplicacion/css/contacto.css' %}">
+<link rel="stylesheet" href="{% static 'aplicacion/js/validacionFormulario.js' %}">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST"  id="frmRegistro" action="{% url 'crearCuenta' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" value="+56">
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" class="form-control" id="correo" name="correo">
+                </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena">
+                </div>
+                <div class="form-group">
+                    <label for="recontrasena">Re Contraseña:</label>
+                    <input type="password" class="form-control" id="recontrasena" name="recontrasena">
+                </div>
+                <button type="submit" class="btn btn-primary" id="registro" >Registrarse</button>
+                <br><br><br><br><br><br><br>
+            </form>
+            
+              <a href="{% url 'iniciarSesion' %}">Ir a la página de inicio de sesión</a>  
+    
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+        jQuery.validator.addMethod("nacimiento", function(value, element) {
+            var fechaNacimiento = new Date(value);
+            var fechaActual = new Date();
+            return fechaNacimiento < fechaActual;
+        }, "La fecha de nacimiento debe ser menor que la fecha actual");
+        
+        $("#frmRegistro").validate({
+            debug: true,
+            errorClass: "errorMessage",
+            rules:{
+                nombre:{
+                    required: true,
+                    minlength: 10
+                },
+                telefono: {
+                    required: true,
+                    minlength: 12
+                },
+                correo: {
+                    required: true,
+                    email: true
+                },
+                fechaNacimiento: {
+                    required: true,
+                    dateISO: true,
+                    nacimiento: true
+                },
+                contrasena: {
+                    required: true
+                },
+                recontrasena: {
+                    equalTo: "#contrasena"
+                }
+        
+            },
+            messages: {
+                nombre: {
+                    required: "El campo nombre no puede estar vacio.",
+                    minlength: jQuery.validator.format("El campo nombre debe tener como minimo {0} caracteres.")
+                },
+                telefono: {
+                    required: "El campo teléfono no puede estar vacio.",
+                    minlength: jQuery.validator.format("El campo teléfono debe tener un minimo de {0} caracteres."),
+                },
+                fechaNacimiento: {
+                    required: "El campo fecha de nacimiento es obligatorio.",
+                    dateISO: "Ingrese una fecha válida.",
+                    nacimiento: "La fecha de nacimiento debe ser menor que la fecha actual."
+                }
+                
+            }
+        });
+
+
+    });
+    
+
+</script> 
+
+{% endblock %}
+  
+
+
+

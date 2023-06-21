@@ -1,0 +1,159 @@
+{% extends 'aplicacion/base.html' %}
+
+
+{% load static %}
+{% block content %}
+   
+<link rel="stylesheet" href="{% static 'aplicacion/css/servicios.css' %}">
+
+
+    <div class="produccion" style="font-family: Arial, Helvetica, sans-serif;">
+        <h3 style="text-align: center;">
+            Producción Musical
+        </h3>
+        <p>
+            Soy Músico, Productor Musical e ingeniero en Mezcla y Masterización. Llevo más de 8 años aportando en el
+            rubro de la producción de Discos y Singles.
+        </p>
+        <p>
+            Agradezco mucho que quieras cotizar mi trabajo.  
+        </p>
+        <h6>
+            Modalidad y Valores  
+        </h6>
+
+        <div class="tabla" style="text-align: center;">
+            <table border="1px" >
+                <tr>
+                    <td>Servicio</td>
+                    <td>Detalle</td>
+                    <td>Valor</td>
+                </tr>
+                <tr>
+                    <td class="servicio"><div class="texto">
+                        Mezcla + Master
+                    </div> 
+                        <img src="{% static 'aplicacion/img/ser1.jpg'%}" alt="" class="img_ser">
+                    </td>
+                    <td>Trabajo la mezcla y la masterización de las pistas que envíe el cliente. Posteriormente mandaré una propuesta para ir viendo correcciones, hasta llegar al sonido final deseado.  </td>
+                    <td><label for="" id="cantidadPesos1">70000</label>
+                    <label for="" id="resultadoPesoDolar1" ></label></td>
+                </tr>
+                <tr>
+                    <td class="servicio">
+                        <div class="texto">
+                            Mezcla
+                        </div> 
+                        <img src="{% static 'aplicacion/img/ser3.jpg'%}" alt="" class="img_ser">
+                    </td>
+                    <td>Trabajo la mezcla de las pistas que envíe el cliente. Posteriormente mandaré una propuesta para ir viendo correcciones, hasta llegar al sonido deseado. Luego el cliente deberá mandar a masterizar el track con otro ingeniero para obtener el sonido final. </td>
+                    <td><label for="" id="cantidadPesos2">60000</label>
+                    <label for="" id="resultadoPesoDolar2"></label></td>
+                </tr>
+                <tr>
+                    <td class="servicio">
+                        <div class="texto">Master</div> 
+                        <img src="{% static 'aplicacion/img/ser4.jpg'%}" alt="" class="img_ser">
+                    </td>
+                    <td>Trabajo la masterización de la mezcla que envíe el cliente. Posteriormente mandaré una propuesta para ir viendo correcciones, hasta llegar al sonido final deseado. </td>
+                    <td><label for="" id="cantidadPesos3">35000</label>
+                        <label for="" id="resultadoPesoDolar3"></label></td>
+                </tr>
+                <tr>
+                    <td class="servicio">
+                        <div class="texto">
+                            Mezcla + Master + Edición.
+                        </div>   
+                        <img src="{% static 'aplicacion/img/ser6.jpg'%}" alt="" class="img_ser">
+                    </td>
+                    <td>Igual que el primer punto, pero a esto sumamos edición de las pistas. (Cuantizar pistas al tempo correcto, afinación de voces, Limpiar ruidos, etc)</td>
+                    <td><label for="" id="cantidadPesos4">100000</label>
+                        <label for="" id="resultadoPesoDolar4"></label></td>
+                </tr>
+                <tr>
+                    <td class="servicio">
+                        <div class="texto">
+                            Grabación
+                        </div> 
+                        <img src="{% static 'aplicacion/img/ser2.jpg'%}" alt="" class="img_ser">
+                    </td>
+                    <td>Sesión de grabación 4 horas.
+                        El proceso de grabación va enfocado a obtener el máximo potencial del intérprete. Bajo la guía del productor más la visión de la misma banda, explotar al máximo el nivel al que puede llegar la canción. 
+                        </td>
+                    <td><label for="" id="cantidadPesos5">25000</label>
+                        <label for="" id="resultadoPesoDolar5"></label></td>
+                </tr>
+                <tr>
+                    <td class="servicio">
+                        <div class="texto">
+                            Producción Completa.(Grabación + Edición + Mezcla + Masterización)
+                        </div> 
+                        <img src="{% static 'aplicacion/img/ser5.jpg'%}" alt="" class="img_ser">
+                        </td>
+                    <td>2 Días de grabación guiada para obtener la mejor interpretación del músico. Como productor te guiare para que el producto final sea el mejor posible, obtener la intención adecuada al tema, mejorar afinación, métricas. Ideas de arreglos. etc. Posterior a esto se continúa con los trabajos mencionados anteriormente, Edición, Mezcla y Master.</td>
+                    <td><label for="" id="cantidadPesos6">150000</label>
+                        <label for="" id="resultadoPesoDolar6"></label></td>
+                </tr>
+            </table><br>
+            <br>
+            <br>
+            <br>
+            
+        </div>
+       
+
+
+
+
+
+
+
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+            
+            var apiUrl = 'https://mindicador.cl/api/dolar';
+          
+            
+            $.get(apiUrl, function(data) {
+              var dolarValue = data.serie[0].valor;
+          
+              
+              $('#dolar-value').text(dolarValue);
+          
+              
+              function calcularValorEnDolares(cantidadPesosId, resultadoPesoDolarId) {
+                var cantidadPesos = parseFloat($('#' + cantidadPesosId).text());
+                var cantidadDolares = cantidadPesos / dolarValue;
+                $('#' + resultadoPesoDolarId).text(cantidadDolares.toFixed(2));
+              }
+          
+              
+              calcularValorEnDolares('cantidadPesos1', 'resultadoPesoDolar1');
+              calcularValorEnDolares('cantidadPesos2', 'resultadoPesoDolar2');
+              calcularValorEnDolares('cantidadPesos3', 'resultadoPesoDolar3');
+              calcularValorEnDolares('cantidadPesos4', 'resultadoPesoDolar4');
+              calcularValorEnDolares('cantidadPesos5', 'resultadoPesoDolar5');
+              calcularValorEnDolares('cantidadPesos6', 'resultadoPesoDolar6');
+          
+              
+              $('#cantidadPesos1, #cantidadPesos2, #cantidadPesos3, #cantidadPesos4, #cantidadPesos5, #cantidadPesos6').on('keyup', function() {
+                calcularValorEnDolares('cantidadPesos1', 'resultadoPesoDolar1');
+                calcularValorEnDolares('cantidadPesos2', 'resultadoPesoDolar2');
+                calcularValorEnDolares('cantidadPesos3', 'resultadoPesoDolar3');
+                calcularValorEnDolares('cantidadPesos4', 'resultadoPesoDolar4');
+                calcularValorEnDolares('cantidadPesos5', 'resultadoPesoDolar5');
+                calcularValorEnDolares('cantidadPesos6', 'resultadoPesoDolar6');
+              });
+            });
+          });
+          
+
+      </script>
+
+
+
+      {% endblock %}
+

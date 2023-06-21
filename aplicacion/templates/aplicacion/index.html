@@ -1,0 +1,134 @@
+{% extends 'aplicacion/base.html' %}
+
+
+{% load static %}
+{% block content %}
+<div class="Carrusel-index">
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item">
+          <img src="{% static 'aplicacion/img/04.jpeg' %}" alt="" class="imagen-carusel">
+          <div class="container">
+            <div class="carousel-caption text-start">
+              
+              <h2>Lleva tu Musica al siguiente nivel</h2>
+              
+              <p><a class="btn btn-lg btn-primary" href="{% url 'contacto' %}">Contacto</a></p>
+             
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'aplicacion/img/_MG_9136.jpg'%}" alt="" class="imagen-carusel">
+          <div class="container">
+            <div class="carousel-caption">
+              
+              <h2>Graba tus canciones con los mejores</h2>
+              
+              <p><a class="btn btn-lg btn-primary" href="{% url 'contacto' %}">Contacto</a></p>
+             
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item active">
+          <img src="{% static 'aplicacion/img/_MG_9205.jpg'%}" alt="" class="imagen-carusel">
+          <div class="container">
+            <div class="carousel-caption text-end">
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="trabajos-index">
+
+      
+
+      <h2 class="titulo-trabajos-index" style="text-align: center; color: white;">
+        Trabajos
+      </h2>
+
+
+
+    </div>
+
+
+
+
+  </div>
+  
+  
+  <div class="gallery-container">
+    <div class="image-container" style=" height: 400px;
+    overflow-x: scroll;">
+      <a href="{% url 'entomos2' %}">
+        <img src="{% static 'aplicacion/img/Éntomos - PRAXIS.png'%}" alt="">
+      </a>
+          
+
+      <a href="{% url 'ermita2' %}">
+        <img src="{% static 'aplicacion/img/ERMITA - FINIS GLORIAE (Front).png'%}" alt="">
+      </a>
+
+      <a href="{% url 'poncho' %}">
+        <img src="{% static 'aplicacion/img/20230226 EP WTV Front.png'%}" alt="">
+      </a>
+        
+
+      <a href="{% url 'entomosep' %}">
+        <img src="{% static 'aplicacion/img/EP.jpg'%}" alt="">
+      </a>
+        
+     
+      <a href="{% url 'entomos1' %}">
+        <img src="{% static 'aplicacion/img/a4047025202_10.jpg'%}" alt="">
+      </a>
+        
+      <a href="{% url 'kreen' %}">
+        <img src="{% static 'aplicacion/img/Kreen.jpg'%}" alt="">
+      </a>
+        
+      <a href="{% url 'eternidad' %}">
+        <img src="{% static 'aplicacion/img/eternidad.jpg'%}" alt="">
+      </a>
+        
+      
+        
+      <a href="{% url 'tiolo' %}">
+        <img src="{% static 'aplicacion/img/Tiolo.jpg'%}" alt="">
+      </a>
+        
+      <a href="{% url 'ermita1' %}">
+        <img src="{% static 'aplicacion/img/ERMITA FRONT PRESENTES CARENTES FINAL.jpg'%}" alt="">
+      </a>
+    </div>
+  </div>
+  
+ 
+
+{% endblock %}
+
+ 
+  
+ 
+  
+
+    
+
+
+

@@ -1,0 +1,162 @@
+
+
+
+.titulo-carrusel{
+
+    background-color: rgb(109, 98, 98);
+}
+
+.titulo-carrusel h1{
+    text-align: center;
+    font-size: medium;
+}
+
+
+.gallery-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #af6363;
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+  background-color: #c06c6c;
+  border-radius: 10px;
+}
+
+.gallery-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  overflow-x: scroll;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.gallery-container {
+  
+  white-space: nowrap;
+}
+   
+.gallery-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.gallery-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.image-container img {
+  width: 500px;
+  height: auto;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+}
+ 
+      
+      .image-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .image-container img {
+        width: 500px;
+        height: auto;
+        margin-right: 0;
+        border: 1px solid #ccc;
+      }
+      
+      
+      
+  
+      
+      .image-container img:hover {
+        opacity: 0.95;
+        transform: scale(0.95);
+        transition: all 0.2s ease-in-out;
+      }
+    
+      .imagen-carusel {
+        max-width: 1000px;
+        max-height: 500px;
+        width: auto;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        background-color: black;
+
+      }
+
+      .carousel-control-prev{
+        background-color: transparent;
+     
+
+      
+
+      }
+
+      .carousel-control-next{
+        background-color: transparent;
+
+      }
+     
+
+      .carousel-inner{
+
+        background-color: black;
+
+      }
+
+      .trabajos-index{
+        background-color: rgb(0, 0, 0);
+
+
+      }
+
+
+  
+      .carousel-caption {
+        opacity: 0; 
+        transition: opacity 1s ease-in-out;
+        transition-delay: 1s; 
+      }
+      
+      .carousel-item.active .carousel-caption {
+        opacity: 1; 
+      }
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+

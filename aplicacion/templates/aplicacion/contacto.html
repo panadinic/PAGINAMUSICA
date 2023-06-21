@@ -1,0 +1,140 @@
+
+{% extends 'aplicacion/base.html' %}
+
+
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'aplicacion/css/contacto.css' %}">
+<div class="contacto_in">
+    <h4 style="color: azure;">Puedes enviarme un mensaje con el servicio  que necesites y te lo respondere lo antes posible</h4>
+  </div>
+ 
+    <div class="formulario-wrap">
+      <div class="formplace">
+        <div class="contacto" >
+          <form id="form-envio" method="POST"  action="/enviar_mensaje/">
+            {% csrf_token %}
+            <table class="tabla" border="" >
+              <tr>
+                <td><label for="nombre" >Nombre:</label></td>
+                <td><input type="text" id="nombre" class="form-control" name="nombre"></td>
+                <td><span id="nombre-error" class="error-message"></span></td>
+                
+                
+              </tr>
+              <tr>
+                <td><label for="email">E-Mail</label></td>
+                <td><input type="text" id="email" class="form-control" name="correo_electronico"></td>
+                <td><span id="email-error" class="error-message"></span></td>
+                
+              </tr>
+              <tr>
+                <td><label for="">Servicio</label></td>
+                <td><select name="servicio" id="servicio">
+                  <option value="" selected>Selecciona una opción</option>
+                  <option value="servicio1">Mezcla</option>
+                  <option value="servicio2">Mezcla + Master</option>
+                  <option value="servicio3">Master</option>
+                  <option value="servicio4">Mezcla+Master+Edicion</option>
+                  <option value="servicio5">Grabacion</option>
+                  <option value="servicio6">Produccion Completa</option>
+                  <option value="servicio7">Clases</option>
+                </select></td>
+                <td><span id="servicio-error" class="error-message"></span></td>
+              </tr>
+              <tr>
+                <td><label for="mensaje">Mensaje:</label></td>
+                <td><textarea name="mensaje" id="mensaje" cols="30" rows="10" class="form-control"></textarea></td>
+                <td><span id="mensaje-error" class="error-message"></span></td>
+                
+              </tr>
+              <tr>
+                  <td colspan="2" style="text-align: right;"><button type="submit" id="enviar" onclick="validarContacto()">Enviar</button></td>
+              </tr>
+            </table>
+            
+          </form>
+        
+      
+        </div>
+  
+  
+       </div>
+    </div>
+
+      <script>
+        
+
+      
+        function validarContacto(){
+         
+          var nombre = document.getElementById("nombre").value;
+          var nombreRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{3,}$/;
+          var email = document.getElementById("email").value;
+          var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+          var mensaje = document.getElementById("mensaje").value;
+          var mensajeRegex = /^[\w\W]{10,}$/;
+          var servicio = document.getElementById("servicio").value;
+
+          
+          if(nombre === "") {
+            var nombreError = document.getElementById("nombre-error");
+                nombreError.innerHTML = "* Debe ingresar un nombre";
+                nombreError.style.display = "block";
+            event.preventDefault(); 
+          
+            
+          }
+          else if(!nombreRegex.test(nombre)) {
+            console.log("* El nombre no es válido");
+            event.preventDefault(); 
+           
+          }
+
+          if(email=== ""){
+            var emailError = document.getElementById("email-error");
+                emailError.innerHTML = "* Debe ingresar un mail";
+                emailError.style.display = "block";
+            event.preventDefault(); 
+          }
+          else if (!emailRegex.test(email)){
+            var emailError = document.getElementById("email-error");
+                emailError.innerHTML = "* Debe ingresar un mail VALIDO";
+                emailError.style.display = "block";
+            event.preventDefault(); 
+          }
+          if(mensaje ===""){
+            var mensajeError = document.getElementById("mensaje-error");
+                mensajeError.innerHTML = "*debe escribir algo en el mensaje";
+                mensajeError.style.display = "block";
+                event.preventDefault(); 
+
+          }
+          else if(!mensajeRegex.test(mensaje)){
+            var mensajeError = document.getElementById("mensaje-error");
+                mensajeError.innerHTML = "*debe escribir algo de minimo 10 caracteres";
+                mensajeError.style.display = "block";
+                event.preventDefault(); 
+          }
+          if(servicio === "" || servicio === "Selecciona una opción") {
+            var servicioError = document.getElementById("servicio-error");
+            servicioError.innerHTML = "*Debe seleccionar un servicio";
+            servicioError.style.display = "block";
+            event.preventDefault();
+          }
+          
+          };
+    
+      </script>
+
+
+{% endblock %}
+  
+
+
+      
+
+    
+     

@@ -1,0 +1,30 @@
+{% extends 'aplicacion/base.html' %}
+
+
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'aplicacion/css/basic.css' %}">
+<link rel="stylesheet" href="{% static 'aplicacion/css/spotify.css' %}">
+<div class="container01">
+    <div class="spotify-play">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/2Ftt0glEcEEnToACWBs24G?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="lista-work" >
+      <h6>ÉNTOMOS - LEVIATÁN</h6>
+      <ul>
+          <li>Album</li>
+          <li>Record</li>
+          <li>Mixing/Master</li>
+          <li>Producer</li>
+          <li>2021</li>
+      
+        </ul>
+  
+     </div>
+
+  </div>
+  <div class="resto">
+   
+    
+  </div>
+  {% endblock %}
