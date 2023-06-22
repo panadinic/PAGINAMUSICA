@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import HomePageView, ContactoPageView, ServiciosPageView, ClasesPageView, IniciarSesionPageView, CrearCuentaView, enviar_mensaje,crear_cuenta
+from .views import HomePageView, ContactoPageView, ServiciosPageView, ClasesPageView, IniciarSesionPageView, CrearCuentaView, enviar_mensaje
 
 
 urlpatterns = [
@@ -12,7 +12,7 @@ urlpatterns = [
     path('crearCuenta/', CrearCuentaView.as_view(), name="crearCuenta"),
     path('enviar_mensaje/',enviar_mensaje,name="enviar_mensaje"),
     ## path de spotify
-     path('crearCuenta/submit/', crear_cuenta, name="crearCuentaSubmit"),
+    # path('crearCuenta/submit/', crear_cuenta, name="crearCuentaSubmit"),
     
     
     

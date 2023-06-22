@@ -32,7 +32,7 @@ class IniciarSesionPageView(TemplateView):
 class CrearCuentaView(FormView):
     template_name = 'aplicacion/crearCuenta.html'
     form_class = RegistroForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('home')
 
 
 
@@ -55,14 +55,14 @@ def enviar_mensaje(request):
         return render(request, 'aplicacion/iniciarSesion.html')
     
     
-def crear_cuenta(request):
-    if request.method == 'POST':
-        form = RegistroForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # Realiza acciones adicionales después de guardar los datos
-            return render(request, 'aplicacion/index.html')
-    else:
-        form = RegistroForm()
+# def crear_cuenta(request):
+#     if request.method == 'POST':
+#         form = RegistroForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             # Realiza acciones adicionales después de guardar los datos
+#             return render(request, 'aplicacion/index.html')
+#     else:
+#         form = RegistroForm()
     
-    return render(request, 'aplicacion/crearCuenta.html', {'form': form})
+#     return render(request, 'aplicacion/crearCuenta.html', {'form': form})

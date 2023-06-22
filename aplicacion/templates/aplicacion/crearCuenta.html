@@ -14,32 +14,32 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="POST" id="frmRegistro" action="{% url 'crearCuentaSubmit' %}">
+            <form method="POST" id="frmRegistro" action="{% url 'crearCuenta' %}">
 
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="nombre">Nombre Completo:</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ current_name }}">
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono" value="+56">
+                    <input type="tel" class="form-control" id="telefono" name="telefono" value="{{ current_phone }}">
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo:</label>
-                    <input type="email" class="form-control" id="correo" name="correo">
+                    <input type="email" class="form-control" id="correo" name="correo" value="{{ current_email }}">
                 </div>
                 <div class="form-group">
                     <label for="fechaNacimiento">Fecha de nacimiento:</label>
-                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" value="{{ current_birthdate }}">
                 </div>
                 <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
-                    <input type="password" class="form-control" id="contrasena" name="contrasena">
+                    <input type="password" class="form-control" id="contrasena" name="contrasena1">
                 </div>
                 <div class="form-group">
                     <label for="recontrasena">Re Contraseña:</label>
-                    <input type="password" class="form-control" id="recontrasena" name="recontrasena">
+                    <input type="password" class="form-control" id="recontrasena" name="contrasena2">
                 </div>
                 <button type="submit" class="btn btn-primary" id="registro" >Registrarse</button>
                 <br><br><br><br><br><br><br>

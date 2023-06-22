@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 
 
@@ -26,15 +27,10 @@ class Cliente(models.Model):
 
 
 class CustomUser(AbstractUser):
-    telefono = models.CharField(max_length=12)
-    fechaNacimiento = models.DateField(null=True, default=None)
-
-
-    # Agrega otros campos adicionales según tus necesidades
+    telefono = models.CharField(max_length=12, null=False, blank=False)
+    fechaNacimiento = models.DateField(null=False, blank=False, default=timezone.now)
+    email = models.EmailField(null=False, blank=False)
+    nombre = models.CharField(max_length=255, null=False, blank=False)
 
     def __str__(self):
         return self.username
-
-
-
-
