@@ -3,12 +3,19 @@
 
 
 {% block content %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+{% comment %} <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script> {% endcomment %}
+{% comment %} <script src="{% static 'aplicacion/js/validacionFormulario.js' %}"></script> {% endcomment %}
+
 <link rel="stylesheet" href="{% static 'aplicacion/css/contacto.css' %}">
-<link rel="stylesheet" href="{% static 'aplicacion/js/validacionFormulario.js' %}">
+{% comment %} <link rel="stylesheet" href="{% static 'aplicacion/js/validacionFormulario.js' %}"> {% endcomment %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="POST"  id="frmRegistro" action="{% url 'crearCuenta' %}">
+            <form method="POST" id="frmRegistro" action="{% url 'crearCuentaSubmit' %}">
+
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="nombre">Nombre Completo:</label>
@@ -43,8 +50,7 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script> {% endcomment %}
 
 
 <script>
@@ -107,6 +113,28 @@
     
 
 </script> 
+
+
+<script>
+    $(document).ready(function() {
+      $('#frmRegistro').submit(function(event) {
+        event.preventDefault();
+        var formulario = $(this);
+        $.ajax({
+          url: formulario.attr('action'),
+          type: formulario.attr('method'),
+          data: formulario.serialize(),
+          success: function(response) {
+            // Manejar la respuesta del servidor aquí
+          },
+          error: function(xhr, errmsg, err) {
+            // Manejar errores de la solicitud aquí
+          }
+        });
+      });
+    });
+  </script>
+  
 
 {% endblock %}
   

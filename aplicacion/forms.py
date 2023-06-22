@@ -4,8 +4,8 @@ from .models import CustomUser
 
 class RegistroForm(UserCreationForm):
     # Agrega los campos adicionales que deseas para el registro de usuarios
-    fecha_nacimiento = forms.DateField()
+    fechaNacimiento = forms.DateField()
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + ('fecha_nacimiento',)
+        fields = UserCreationForm.Meta.fields + ('fechaNacimiento',)

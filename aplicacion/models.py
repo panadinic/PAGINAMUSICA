@@ -27,7 +27,7 @@ class Cliente(models.Model):
 
 class CustomUser(AbstractUser):
     telefono = models.CharField(max_length=12)
-    fecha_nacimiento = models.DateField(null=True, default=None)
+    fechaNacimiento = models.DateField(null=True, default=None)
 
 
     # Agrega otros campos adicionales según tus necesidades

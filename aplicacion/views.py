@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -34,15 +34,7 @@ class CrearCuentaView(FormView):
     form_class = RegistroForm
     success_url = reverse_lazy('index')
 
-    def form_valid(self, form):
-        form.save()
-        messages.success(self.request, '¡Cuenta creada exitosamente!')
-        return super().form_valid(form)
 
-    def form_invalid(self, form):
-        messages.error(self.request, 'Error al crear la cuenta. Por favor, revise los datos ingresados.')
-        return super().form_invalid(form)    
-       
 
 def enviar_mensaje(request):
     if request.method == 'POST':
@@ -63,7 +55,14 @@ def enviar_mensaje(request):
         return render(request, 'aplicacion/iniciarSesion.html')
     
     
-
-
-
-
+def crear_cuenta(request):
+    if request.method == 'POST':
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Realiza acciones adicionales después de guardar los datos
+            return render(request, 'aplicacion/index.html')
+    else:
+        form = RegistroForm()
+    
+    return render(request, 'aplicacion/crearCuenta.html', {'form': form})
