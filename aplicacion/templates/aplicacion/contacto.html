@@ -51,6 +51,16 @@
                 
               </tr>
               <tr>
+                <td><label for="">Total Servicio:</label></td>
+                <td><label id="total-carrito-label"  name="total_carrito"></label></td>
+                <input type="hidden" id="total-carrito-input" name="total_carrito">
+              </tr>
+              <tr>
+                <td><label for="">Servicios:</label></td>
+                <td><label id="servicios-seleccionados-label" name="servicios_seleccionados"></label></td>
+                <input type="hidden" id="servicios-seleccionados-input" name="servicios_seleccionados">
+              </tr>
+              <tr>
                   <td colspan="2" style="text-align: right;"><button type="submit" id="enviar" onclick="validarContacto()">Enviar</button></td>
               </tr>
             </table>
@@ -64,6 +74,30 @@
        </div>
     </div>
 
+    <script>
+      function obtenerParametrosURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const totalCarrito = urlParams.get('total_carrito');
+        const serviciosSeleccionados = urlParams.get('servicios');
+    
+        document.getElementById('total-carrito-label').textContent = totalCarrito || '';
+        document.getElementById('servicios-seleccionados-label').textContent = serviciosSeleccionados || '';
+      }
+    
+      // Llama a la función para obtener los parámetros de la URL al cargar la página
+      window.addEventListener('DOMContentLoaded', obtenerParametrosURL);
+    </script>
+
+    <script>
+      // Obtén los valores de los elementos label
+      var totalCarritoLabel = document.getElementById("total-carrito-label").innerText;
+      var serviciosSeleccionadosLabel = document.getElementById("servicios-seleccionados-label").innerText;
+    
+      // Asigna los valores a los campos ocultos correspondientes
+      document.getElementById("total-carrito-input").value = totalCarritoLabel;
+      document.getElementById("servicios-seleccionados-input").value = serviciosSeleccionadosLabel;
+    </script>
+      
       <script>
         
 

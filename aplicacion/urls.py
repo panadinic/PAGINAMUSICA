@@ -13,6 +13,7 @@ urlpatterns = [
     path('enviar_mensaje/',enviar_mensaje,name="enviar_mensaje"),
     ## path de spotify
     path('crearCuenta/submit/', crear_cuenta, name="crearCuentaSubmit"),
+    path('contacto/<int:total_carrito>/<str:servicios>/', ContactoPageView.as_view(), name="contacto_parametros"),
     
     
     

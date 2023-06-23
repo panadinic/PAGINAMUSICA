@@ -36,15 +36,85 @@ class CrearCuentaView(FormView):
 
 
 
+# def enviar_mensaje(request):
+#     if request.method == 'POST':
+#         nombre = request.POST['nombre']
+#         correo = request.POST['correo_electronico']
+#         servicio = request.POST['servicio']
+#         mensaje = request.POST['mensaje']
+
+      
+#         cliente = Cliente(nombre=nombre, correo_electronico=correo, servicio=servicio, mensaje=mensaje)
+#         cliente.save()
+
+#         print("Datos guardados en la base de datos.")
+
+#         # Puedes realizar alguna acción adicional después de guardar los datos, como mostrar un mensaje de éxito o redireccionar a otra página.
+#         return render(request, 'aplicacion/index.html')
+#     else:
+#         return render(request, 'aplicacion/iniciarSesion.html')
+
+
+
+# def enviar_mensaje(request):
+#     if request.method == 'POST':
+#         nombre = request.POST['nombre']
+#         correo = request.POST['correo_electronico']
+#         servicio = request.POST['servicio']
+#         mensaje = request.POST['mensaje']
+#         total_carrito = request.POST.get('total_carrito', '')
+#         servicios_seleccionados = request.POST.get('servicios', '')
+
+#         cliente = Cliente(nombre=nombre, correo_electronico=correo, servicio=servicio, mensaje=mensaje, total_carrito=total_carrito, servicios_seleccionados=servicios_seleccionados)
+#         cliente.save()
+
+#         print("Datos guardados en la base de datos.")
+
+#         # Puedes realizar alguna acción adicional después de guardar los datos, como mostrar un mensaje de éxito o redireccionar a otra página.
+#         return render(request, 'aplicacion/index.html')
+#     else:
+#         return render(request, 'aplicacion/iniciarSesion.html')
+
+
+
+
+# def enviar_mensaje(request):
+#     if request.method == 'POST':
+#         nombre = request.POST['nombre']
+#         correo = request.POST['correo_electronico']
+#         servicio = request.POST['servicio']
+#         mensaje = request.POST['mensaje']
+#         total_carrito = request.POST.get('total_carrito', '')  # Obtener el valor con una cadena vacía como valor predeterminado
+#         servicios_seleccionados = request.POST.get('servicios', '')  # Obtener el valor con una cadena vacía como valor predeterminado
+
+#         # Validar si total_carrito es una cadena vacía y asignar None en su lugar
+#         total_carrito = int(total_carrito) if total_carrito else None
+
+#         cliente = Cliente(nombre=nombre, correo_electronico=correo, servicio=servicio, mensaje=mensaje, total_carrito=total_carrito, servicios_seleccionados=servicios_seleccionados)
+#         cliente.save()
+
+#         print("Datos guardados en la base de datos.")
+
+#         # Puedes realizar alguna acción adicional después de guardar los datos, como mostrar un mensaje de éxito o redireccionar a otra página.
+#         return render(request, 'aplicacion/index.html')
+#     else:
+#         return render(request, 'aplicacion/iniciarSesion.html')
+
+
+
 def enviar_mensaje(request):
     if request.method == 'POST':
         nombre = request.POST['nombre']
         correo = request.POST['correo_electronico']
         servicio = request.POST['servicio']
         mensaje = request.POST['mensaje']
+        total_carrito = request.GET.get('total_carrito')  # Obtener el valor con una cadena vacía como valor predeterminado
+        servicios_seleccionados = request.GET.get('servicios_seleccionados')  # Obtener el valor con una cadena vacía como valor predeterminado
 
-      
-        cliente = Cliente(nombre=nombre, correo_electronico=correo, servicio=servicio, mensaje=mensaje)
+        # Validar si total_carrito es una cadena vacía y asignar None en su lugar
+        total_carrito = int(total_carrito) if total_carrito else None
+
+        cliente = Cliente(nombre=nombre, correo_electronico=correo, servicio=servicio, mensaje=mensaje, total_carrito=total_carrito, servicios_seleccionados=servicios_seleccionados)
         cliente.save()
 
         print("Datos guardados en la base de datos.")
@@ -53,6 +123,7 @@ def enviar_mensaje(request):
         return render(request, 'aplicacion/index.html')
     else:
         return render(request, 'aplicacion/iniciarSesion.html')
+
     
     
 def crear_cuenta(request):
