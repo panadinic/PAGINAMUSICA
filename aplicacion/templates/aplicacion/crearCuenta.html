@@ -14,12 +14,16 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="POST" id="frmRegistro" >
+            <form method="POST" id="frmRegistro"  action="/crearCuenta/submit/" >
 
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="nombre">Nombre Completo:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" value="{{ current_name }}">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ current_username }}">
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
@@ -35,11 +39,11 @@
                 </div>
                 <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
-                    <input type="password" class="form-control" id="contrasena" name="contrasena1">
+                    <input type="password" class="form-control" id="contrasena" name="password1">
                 </div>
                 <div class="form-group">
                     <label for="recontrasena">Re Contraseña:</label>
-                    <input type="password" class="form-control" id="recontrasena" name="contrasena2">
+                    <input type="password" class="form-control" id="recontrasena" name="password2">
                 </div>
                 <button type="submit" class="btn btn-primary" id="registro" >Registrarse</button>
                 <br><br><br><br><br><br><br>

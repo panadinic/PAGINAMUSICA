@@ -33,15 +33,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    
+    'spotify',
+    'aplicacion',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'spotify',
-    'aplicacion',
+    
     'crispy_forms',
     
     
@@ -134,3 +134,10 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'  # o la URL a la que deseas redirigir después de iniciar sesión
+
+
+
+# AUTHENTICATION_BACKENDS = [
+#     'aplicacion.backends.EmailBackend',
+#     # Otros backends si los tienes...
+# ]

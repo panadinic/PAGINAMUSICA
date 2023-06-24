@@ -4,10 +4,9 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from .forms import RegistroForm
 from django.views.generic import FormView
-
-
 from .models import Cliente
 from django.views.generic.base import TemplateView
+import pdb
 
 # Create your views here.
 class HomePageView(TemplateView):
@@ -129,10 +128,17 @@ def enviar_mensaje(request):
 def crear_cuenta(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
+        # pdb.set_trace() 
         if form.is_valid():
+            mensaje = "entramso al valid"
+            print(mensaje)                                
             form.save()
             # Realiza acciones adicionales después de guardar los datos
             return redirect('iniciarSesion')
+        else:
+            mensaje = "esto no funciona"
+            print(mensaje)
+            # form = RegistroForm()
     else:
         form = RegistroForm()
     
