@@ -48,7 +48,16 @@
               <img src="{% static 'aplicacion/img/Facebook_f_logo_(2021).svg.png'%}" alt="" class="logo-redes">
               <img src="{% static 'aplicacion/img/Spotify_logo_without_text.svg.png'%}" alt="" class="logo-redes">
               <img src="{% static 'aplicacion/img/youtube-round-icon.webp'%}" alt="" class="logo-redes">
-            </div>            {% endcomment %}
+            </div>{% endcomment %}
+
+            <td>
+              {% if request.user.is_authenticated %}
+                  <span>Bienvenido, {{ request.user.username }}</span>
+                  <a href="{% url 'logout' %}">Cerrar sesión</a>
+              {% else %}
+                  {% comment %} <a href="{% url 'iniciarSesion' %}">Iniciar sesión</a> {% endcomment %}
+              {% endif %}
+          </td>
           </td>
           <td colspan="20">
             

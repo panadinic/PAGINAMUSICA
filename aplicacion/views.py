@@ -8,6 +8,8 @@ from .models import Cliente
 from django.views.generic.base import TemplateView
 import pdb
 from django.views import View
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -24,10 +26,11 @@ class ServiciosPageView(TemplateView):
 class ClasesPageView(TemplateView):
     template_name = "aplicacion/clases.html"   
 
-class IniciarSesionPageView(TemplateView):
-    template_name = "aplicacion/iniciarSesion.html"
+# class IniciarSesionPageView(TemplateView):
+#     template_name = "aplicacion/iniciarSesion.html"
     
-
+class IniciarSesionPageView(LoginView):
+    template_name = 'aplicacion/iniciarSesion.html'
     
 class CrearCuentaView(FormView):
     template_name = 'aplicacion/crearCuenta.html'
@@ -79,3 +82,53 @@ def crear_cuenta(request):
         form = RegistroForm()
     
     return render(request, 'aplicacion/crearCuenta.html', {'form': form})
+
+
+
+
+
+
+
+# def login_view(request):
+#     if request.method == 'POST':
+#         correo = request.POST['correo']
+#         contrasena = request.POST['contrasena']
+#         user = authenticate(request, username=correo, password=contrasena)
+#         if user is not None:
+#             login(request, user)
+#             mensaje = "login_efectivo"
+#             print(mensaje)
+#             # Inicio de sesión exitoso, redirigir a la página de inicio
+#             return redirect('home')
+#         else:
+#             # Credenciales incorrectas, mostrar mensaje de error
+#             error_message = 'Credenciales incorrectas. Inténtalo nuevamente.'
+#             mensaje2 ="no funciona"
+#             print(mensaje2)
+            
+#             return render(request, 'iniciarSesion.html', {'error_message': error_message})
+#     else:
+#         return render(request, 'iniciarSesion.html')
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['contrasena']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Inicio de sesión exitoso, redirigir a la página de inicio
+            return redirect('home')
+        else:
+            # Credenciales incorrectas, mostrar mensaje de error
+            error_message = 'Credenciales incorrectas. Inténtalo nuevamente.'
+            return render(request, 'iniciarSesion.html', {'error_message': error_message})
+    else:
+        return render(request, 'iniciarSesion.html')
+
+def logout_view(request):
+    logout(request)
+    # Redirige a la página de inicio o a cualquier otra página que desees
+    return redirect('home')    
