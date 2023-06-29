@@ -1,21 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
+from aplicacion.models import CustomUser
 
-# class RegistroForm(UserCreationForm):
-#     nombre = forms.CharField(label='Nombre Completo')
-#     telefono = forms.CharField(label="Teléfono")
-#     email = forms.EmailField(label='Correo')
-#     fechaNacimiento = forms.DateField(label="Fecha de Nacimiento")
-#     contrasena1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-#     contrasena2 = forms.CharField(label='Re Contraseña', widget=forms.PasswordInput)
-    
-    
-    
 
-#     class Meta(UserCreationForm.Meta):
-#         model = CustomUser
-#         fields = UserCreationForm.Meta.fields + ('nombre','telefono', 'email', 'fechaNacimiento','contrasena1', 'contrasena2')
 
 
 class RegistroForm(UserCreationForm):
